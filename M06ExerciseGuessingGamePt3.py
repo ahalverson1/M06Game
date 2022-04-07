@@ -10,7 +10,7 @@ f.close()
 
 #define variables
 word = random.choice(wordList).strip()
-letters = (len(word)-1)
+letters = (len(word))
 print(word)
 
 print(f'There are ' + str(letters) + ' letters in this word')
@@ -23,21 +23,21 @@ while win_game == False and num_guesses > 0:
     user_input = input('Enter a letter: ')
     guess = str(user_input.lower())
     guess_word_result = ''
-    def check_input(user_input):
-        if user_input.isalpha() is False:
-            print('Please input a letter or word guess. You have ' + str(num_guesses) + ' guesses left.')
-    if guess == word:
-        guess_word_result = 'Correct word! You win!'
-        win_game = True
-    elif user_input is not int and guess in lettersGuessed:
-        guess_word_result = 'You have already guessed this letter. Pick again. You have ' + str(num_guesses) + ' guesses left.'
-    elif user_input is not int and guess in word:
-        guess_word_result = 'Good guess! You have ' + str(num_guesses) + ' guesses left.'
-    elif user_input is not int and guess not in word:
-        num_guesses = num_guesses - 1
-        guess_word_result = 'Wrong guess. You have ' + str(num_guesses) + ' guesses left.'
+    if user_input.isalpha() is False or len(guess) > 1:
+        print('Please input a letter.')
     else:
-        guess_word_result = ''
+        if guess == word:
+            guess_word_result = 'Correct word! You win!'
+            win_game = True
+        elif user_input is not int and guess in lettersGuessed:
+            guess_word_result = 'You have already guessed this letter. Pick again. You have ' + str(num_guesses) + ' guesses left.'
+        elif user_input is not int and guess in word:
+            guess_word_result = 'Good guess! You have ' + str(num_guesses) + ' guesses left.'
+        elif user_input is not int and guess not in word:
+            num_guesses = num_guesses - 1
+            guess_word_result = 'Wrong guess. You have ' + str(num_guesses) + ' guesses left.'
+        else:
+            guess_word_result = ''
 
     print(guess_word_result)
 
