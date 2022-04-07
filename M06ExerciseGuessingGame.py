@@ -2,7 +2,7 @@
 word = 'puppy'
 letters = len(word)
 
-print(f'There are ' + str(letters) + ' letters in this word')
+print(f'There are ' + str(letters) + ' letters in this word. The game starts with 7 guesses.')
 
 num_guesses = 7
 lettersGuessed = ''
